@@ -1,0 +1,26 @@
+version: "2"
+
+volumes:
+  production_metabase_data: {}
+
+services:
+  metabase:
+    image: metabase/metabase
+    container_name: bolid_production_metabase
+    volumes:
+      - production_metabase_data:/metabase-data
+    environment:
+      - VIRTUAL_HOST=metabase.bolid.be
+      - LETSENCRYPT_HOST=metabase.bolid.be
+      - MB_DB_FILE=/metabase-data/metabase.db
+    networks:
+      - nginxproxy_production_network
+      - bolid_api_production_network
+    expose:
+      - "3000"
+
+networks:
+  nginxproxy_production_network:
+    external: true
+  bolid_api_production_network:
+    external: true
