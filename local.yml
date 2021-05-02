@@ -12,7 +12,6 @@ services:
     environment:
       - VIRTUAL_HOST=metabase.bolid.local
       - VIRTUAL_PORT=3000
-      - LETSENCRYPT_HOST=metabase.bolid.local
       - MB_DB_FILE=/metabase-data/metabase.db
     networks:
       - nginxproxy_local_network
