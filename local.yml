@@ -10,7 +10,7 @@ services:
     volumes:
       - local_metabase_data:/metabase-data
     environment:
-      - VIRTUAL_HOST=metabase.bolid.local
+      - VIRTUAL_HOST=dashboard.bolid.local
       - VIRTUAL_PORT=3000
       - MB_DB_FILE=/metabase-data/metabase.db
     networks:
