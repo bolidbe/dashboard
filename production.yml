@@ -6,7 +6,7 @@ volumes:
 services:
   metabase:
     image: metabase/metabase
-    container_name: bolid_dashboard_production_metabase
+    container_name: dashboard_production_metabase
     volumes:
       - production_metabase_data:/metabase-data
     environment:
