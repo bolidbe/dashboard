@@ -1,3 +1,3 @@
-# Metabase
+# Dashboard
 
-Metabase is a simple Docker configuration meant to provide a dashboarding tool for bolid.
+Dashboard is a simple Docker configuration meant to provide a dashboarding tool (Metabase) for bolid.

@@ -2,17 +2,24 @@ version: "2"
 
 volumes:
   local_metabase_data: {}
+  local_metabase_backups: {}
 
 services:
   metabase:
-    image: metabase/metabase
+    build:
+      context: .
+      dockerfile: ./compose/local/Dockerfile
+    image: dashboard_local_metabase
     container_name: dashboard_local_metabase
     volumes:
-      - local_metabase_data:/metabase-data
+      - ./metabase:/usr/local/bin
+      - local_metabase_data:/data
+      - local_metabase_backups:/backups
+    env_file:
+      - ./.envs/.metabase
     environment:
       - VIRTUAL_HOST=dashboard.bolid.local
       - VIRTUAL_PORT=3000
-      - MB_DB_FILE=/metabase-data/metabase.db
     networks:
       - nginxproxy_local_network
       - bolid_api_local_network

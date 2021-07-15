@@ -2,24 +2,26 @@ version: "2"
 
 volumes:
   production_metabase_data: {}
+  production_metabase_backups: {}
 
 services:
   metabase:
-    image: metabase/metabase
+    build:
+      context: .
+      dockerfile: ./compose/production/Dockerfile
+    image: dashboard_production_metabase
     container_name: dashboard_production_metabase
     volumes:
-      - production_metabase_data:/metabase-data
+      - production_metabase_data:/data
+      - production_metabase_backups:/backups
+    env_file:
+      - ./.envs/.metabase
     environment:
       - VIRTUAL_HOST=dashboard.bolid.be
       - VIRTUAL_PORT=3000
-      - LETSENCRYPT_HOST=dashboard.bolid.be
-      - MB_DB_FILE=/metabase-data/metabase.db
     networks:
       - nginxproxy_production_network
-      - bolid_api_production_network
 
 networks:
   nginxproxy_production_network:
-    external: true
-  bolid_api_production_network:
     external: true
