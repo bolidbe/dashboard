@@ -19,6 +19,7 @@ services:
     environment:
       - VIRTUAL_HOST=dashboard.bolid.be
       - VIRTUAL_PORT=3000
+      - LETSENCRYPT_HOST=dashboard.bolid.be
     networks:
       - nginxproxy_production_network
 
