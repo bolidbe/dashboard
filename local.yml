@@ -22,10 +22,10 @@ services:
       - VIRTUAL_PORT=3000
     networks:
       - nginxproxy_local_network
-      - bolid_api_local_network
+      # - bolid_api_local_network
 
 networks:
   nginxproxy_local_network:
     external: true
-  bolid_api_local_network:
-    external: true
+  # bolid_api_local_network:
+  #  external: true
